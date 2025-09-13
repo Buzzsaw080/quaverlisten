@@ -69,7 +69,7 @@ connection.close()
 copy_used = False
 for song in songs:
     # Sanitize song name and artist
-    bad_chars = ['/','\\']
+    bad_chars = ['/','\\',':','<','>','?','|','*','"']
 
     song_title = song[0]
     for bad_char in bad_chars:
