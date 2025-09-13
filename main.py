@@ -95,6 +95,8 @@ for song in songs:
             source_file,
             output_file
         )
+    except OSError:
+        print(f"WARN: Could not create {output_file}")
     except PermissionError:
         if cmd_args.verbose:
             print("WARN: Insufficient permission to symlink, copying")
