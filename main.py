@@ -91,18 +91,19 @@ for song in songs:
         print(source_file + " -> " + output_file)
 
     try:
-        os.symlink(
-            source_file,
-            output_file
-        )
-    except OSError:
-        if cmd_args.verbose:
-            print("WARN: Insufficient permission to symlink, copying")
-        copy_used = True
-        shutil.copy(
-            source_file,
-            output_file
-        )
+        try:
+            os.symlink(
+                source_file,
+                output_file
+            )
+        except OSError:
+            if cmd_args.verbose:
+                print("WARN: Insufficient permission to symlink, copying")
+            copy_used = True
+            shutil.copy(
+                source_file,
+                output_file
+            )
     except FileExistsError:
         if cmd_args.verbose:
             print("The file already exists, skipping")
