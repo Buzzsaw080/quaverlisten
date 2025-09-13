@@ -107,6 +107,8 @@ for song in songs:
         if cmd_args.verbose:
             print("The file already exists, skipping")
         continue
+    except FileNotFoundError:
+        print(f"WARN: Failed to copy {source_file}, file does not exist")
 
 if copy_used:
     print("WARN: You don't have permission to create symbolic links,"
